@@ -20,10 +20,6 @@ module.exports.FIOmale = FIOmale
 module.exports.IOFmale = IOFmale
 
 
-
-
-
-
 /*-------старый пример, когда пытался в Объекты
 const maleNames = {
     file:"./maleNames.txt",

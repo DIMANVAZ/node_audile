@@ -28,10 +28,20 @@ function rndCarPlates(){
     return `${first} ${second} ${third}`
 }
 
+//-------------название улицы - добавляет слово улица либо оставляет так, если есть слово "переулок" или "проспект"
+function streetName(string){
+    if    (string.toLowerCase().indexOf("проспект") >= 0
+        || string.toLowerCase().indexOf("переулок") >= 0) {
+        return string
+    }
+    else return `улица ${string}`
+}
+
+//------------------экспорты-----------------------------------------
+module.exports.street = streetName;
 module.exports.nomera = rndCarPlates;
 module.exports.rnd = rndArrElem;
 module.exports.grf = getRndFromFile;
-
 
 //-------АСИНХРОННАЯ--функция----------файл переписываем в массив!!--------------
 /*
