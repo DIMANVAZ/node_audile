@@ -5,7 +5,9 @@ const fs = require('fs');
 const params = new URLSearchParams();
 const names_surnames = require('./names_surnames')
 const text = names_surnames.trioMale
-let dayTime = `${new Date().getDate()} Feb ${new Date().getHours()}_${new Date().getMinutes()}`
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
+let D = new Date();
+let dayTime = `${D.getDate()}_${months[D.getMonth()]} ${D.getHours()}_${D.getMinutes()}_${D.getSeconds()}`
 
 params.append('text', text);
 params.append('voice', 'oksana');
