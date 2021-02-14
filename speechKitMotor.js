@@ -4,14 +4,16 @@ const { URLSearchParams } = require('url');
 const fs = require('fs');
 const params = new URLSearchParams();
 const names_surnames = require('./names_surnames')
-const text = names_surnames.FIOmale
+const text = names_surnames.trioMale
+let dayTime = `${new Date().getDate()} Feb ${new Date().getHours()}_${new Date().getMinutes()}`
 
 params.append('text', text);
 params.append('voice', 'oksana');
 params.append('emotion', 'good');
 params.append('lang', 'ru-RU');
-params.append('speed', '0.8');
+params.append('speed', '1.0');
 params.append('format', 'oggopus');
+//params.append('format', 'lpcm');
 
 fetch('https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize', {
         method: 'post',        
@@ -24,7 +26,7 @@ fetch('https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize', {
     .then(res => {
         console.log(res);
         // return res.json();
-        const dest = fs.createWriteStream(`./fio.ogg`);
+        const dest = fs.createWriteStream(`./${dayTime}.ogg`);
         res.body.pipe(dest);
     })
     .catch(err => console.error(err));
